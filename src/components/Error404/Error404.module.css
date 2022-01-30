@@ -1,0 +1,23 @@
+.container {
+    margin: 0 auto;
+    width: 1000px;
+    font-size: 20px;
+    padding: 100px 0 150px 0;
+    text-align: center;
+}
+
+.container:before {
+    background: url(../../assets/images/404.svg) no-repeat 50%;
+    width: 535px;
+    height: 293px;
+    content: "";
+    display: block;
+    margin: 0 auto 75px;
+}
+
+.text {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #30363c;
+    text-transform: uppercase;
+}

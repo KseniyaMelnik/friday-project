@@ -1,0 +1,49 @@
+.default {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    width: 120px;
+    box-sizing: border-box;
+    appearance: none;
+    background-color: #b0c2cc;
+    border: 2px solid #93a1a1;
+    border-radius: 0.25rem;
+    color: #5e6c7c;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.6em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.default:hover {
+    box-shadow: 0 0 40px 40px #539ed1 inset;
+    color: #4b5065;
+    outline: 0;
+}
+
+.default:focus {
+    outline: 0;
+}
+
+.default:disabled {
+    transition: none;
+    box-shadow: none;
+    color: #3d3b3b;
+    opacity: .5;
+    cursor: auto;
+}
+
+.red {
+    background: red;
+    color: #494949;
+}
+
+.red:hover {
+    box-shadow: 0 0 40px 40px #a22a2a inset;
+    color: #abaaaa;
+    outline: 0;
+}

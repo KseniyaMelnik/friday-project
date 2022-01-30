@@ -1,0 +1,91 @@
+.label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #5e6c7c;
+    font-weight: 700;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.dark {
+    color: #a4a9ad;
+}
+.red {
+    color: #735555;
+}
+
+.green {
+    color: #6c8a6c;
+}
+.blue {
+    color: #4d6679;
+}
+.yellow {
+    color: #96844c;
+}
+
+.label .input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.label:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.label input:checked ~ .checkmark {
+    background-color: #539ed1;
+}
+.dark.label input:checked ~ .checkmark {
+    background: #535365;
+}
+.red.label input:checked ~ .checkmark {
+    background: #835b68;
+}
+.green.label input:checked ~ .checkmark {
+    background: #6aa16a;
+}
+.blue.label input:checked ~ .checkmark {
+    background: #567c8f;
+}
+.yellow.label input:checked ~ .checkmark {
+    background: #ecec77;
+}
+
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.label .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
