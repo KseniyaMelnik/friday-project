@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import {Login} from "./components/Login";
-import {Registration} from "./components/Registration";
+import {Registration} from "./components/Registration/Registration";
 import {Profile} from "./components/Profile";
 import {NewPassword} from "./components/NewPassword";
 import {PasswordRetrieval} from "./components/PasswordRetrieval";
