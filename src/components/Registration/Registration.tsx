@@ -6,6 +6,7 @@ import {signUpTC} from "../../store/registration-reducer";
 import {AppRootStateType} from "../../store/store";
 import SuperInputText from "../common/SuperInput/SuperInputText";
 import SuperButton from "../common/SuperButton/SuperButton";
+import {validateEmail} from "../../utils/validators/validatorEmail";
 
 export const Registration = () => {
     const [email, setEmail] = useState('')
@@ -21,6 +22,10 @@ export const Registration = () => {
     const success = useSelector<AppRootStateType, boolean >(state=> state.register.success)
     const error = useSelector<AppRootStateType, null|string>(state => state.register.error)
 
+    const errorEmail = validateEmail(email) ? "" : "Введите корректный email"
+
+    const disabled = isLoading || !!errorEmail
+
     if (success) {
         return <Navigate to={'/login'} />
     }
@@ -35,6 +40,7 @@ export const Registration = () => {
                                     placeholder={"Email"}
                                     value={email}
                                     onChangeText={setEmail}
+                                    error={errorEmail}
                     />
                 </div>
                 <div>
@@ -52,7 +58,9 @@ export const Registration = () => {
                     />
                 </div>
                 <div>
-                    <SuperButton type='button' onClick={RegisterCallback} disabled={isLoading}>Register</SuperButton>
+                    <SuperButton type='button'
+                                 onClick={RegisterCallback}
+                                 disabled={disabled}>Register</SuperButton>
                 </div>
             </form>
             {error? <span className={s.error}>{error}</span>: null}

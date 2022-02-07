@@ -4,7 +4,6 @@
     <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: registration page added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/SuperInput/SuperInputText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/SuperInput/SuperInputText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/registration-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/registration-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +16,7 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -101,7 +101,7 @@
       <workItem from="1643986119641" duration="2049000" />
       <workItem from="1644060482289" duration="1610000" />
       <workItem from="1644160723422" duration="390000" />
-      <workItem from="1644230647487" duration="691000" />
+      <workItem from="1644230647487" duration="2328000" />
     </task>
     <task id="LOCAL-00001" summary="feat: registration page added">
       <created>1644061357583</created>
