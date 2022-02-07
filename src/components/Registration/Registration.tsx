@@ -6,7 +6,8 @@ import {signUpTC} from "../../store/registration-reducer";
 import {AppRootStateType} from "../../store/store";
 import SuperInputText from "../common/SuperInput/SuperInputText";
 import SuperButton from "../common/SuperButton/SuperButton";
-import {validateEmail} from "../../utils/validators/validatorEmail";
+
+import {validateEmail, validatePassword} from "../../utils/validators/validator";
 
 export const Registration = () => {
     const [email, setEmail] = useState('')
@@ -23,6 +24,7 @@ export const Registration = () => {
     const error = useSelector<AppRootStateType, null|string>(state => state.register.error)
 
     const errorEmail = validateEmail(email) ? "" : "Введите корректный email"
+    const errorPassword = validatePassword(password) ? "" : "Пароль должен содержать не менее 8 символов"
 
     const disabled = isLoading || !!errorEmail
 
@@ -48,6 +50,7 @@ export const Registration = () => {
                                     placeholder={"password"}
                                     value={password}
                                     onChangeText={setPassword}
+                                    error = {errorPassword}
                     />
                 </div>
                 <div>

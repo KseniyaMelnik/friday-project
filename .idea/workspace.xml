@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/registration-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/registration-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validators/validatorEmail.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +102,7 @@
       <workItem from="1643986119641" duration="2049000" />
       <workItem from="1644060482289" duration="1610000" />
       <workItem from="1644160723422" duration="390000" />
-      <workItem from="1644230647487" duration="2328000" />
+      <workItem from="1644230647487" duration="3164000" />
     </task>
     <task id="LOCAL-00001" summary="feat: registration page added">
       <created>1644061357583</created>
