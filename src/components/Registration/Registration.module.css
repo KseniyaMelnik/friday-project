@@ -1,0 +1,12 @@
+.form {
+    width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-around;
+}
+
+.error {
+    color: red
+}

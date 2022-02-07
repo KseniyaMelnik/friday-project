@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="">
+    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: registration page added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/SuperInput/SuperInputText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/SuperInput/SuperInputText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/registration-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/registration-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -100,8 +99,18 @@
       <workItem from="1643622019781" duration="494000" />
       <workItem from="1643810078949" duration="2130000" />
       <workItem from="1643986119641" duration="2049000" />
-      <workItem from="1644060482289" duration="699000" />
+      <workItem from="1644060482289" duration="1610000" />
+      <workItem from="1644160723422" duration="390000" />
+      <workItem from="1644230647487" duration="691000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: registration page added">
+      <created>1644061357583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644061357584</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,5 +127,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: registration page added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: registration page added" />
   </component>
 </project>

@@ -17,6 +17,7 @@ export const Registration = () => {
         () => dispatch(signUpTC(email, password, password2))
     )
 
+    const isLoading = useSelector<AppRootStateType, boolean>( state => state.register.isLoading)
     const success = useSelector<AppRootStateType, boolean >(state=> state.register.success)
     const error = useSelector<AppRootStateType, null|string>(state => state.register.error)
 
@@ -27,6 +28,7 @@ export const Registration = () => {
         <div>
             <h2>It-incubator</h2>
             <p>Sign Up</p>
+            {isLoading && <span> Loading </span>}
             <form className={s.form} action="">
                 <div>
                     <SuperInputText type="email"
@@ -50,7 +52,7 @@ export const Registration = () => {
                     />
                 </div>
                 <div>
-                    <SuperButton type='button' onClick={RegisterCallback}>Register</SuperButton>
+                    <SuperButton type='button' onClick={RegisterCallback} disabled={isLoading}>Register</SuperButton>
                 </div>
             </form>
             {error? <span className={s.error}>{error}</span>: null}
