@@ -1,7 +1,7 @@
 import s from "./Registration.module.css"
 import React, {ChangeEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {signUpTC} from "../../store/registration-reducer";
 import {AppRootStateType} from "../../store/store";
 import SuperInputText from "../common/SuperInput/SuperInputText";
@@ -19,13 +19,18 @@ export const Registration = () => {
     const [errorPassword2, setErrorPassword2] = useState('')
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const RegisterCallback = (
         () => dispatch(signUpTC(email, password, password2))
     )
 
-    const isLoading = useSelector<AppRootStateType, boolean>( state => state.register.isLoading)
-    const success = useSelector<AppRootStateType, boolean >(state=> state.register.success)
-    const error = useSelector<AppRootStateType, null|string>(state => state.register.error)
+    const CancelCallback = ()=> {
+        navigate('/login', { replace: true })
+    }
+
+    const isLoading = useSelector<AppRootStateType, boolean>(state => state.register.isLoading)
+    const success = useSelector<AppRootStateType, boolean>(state => state.register.success)
+    const error = useSelector<AppRootStateType, null | string>(state => state.register.error)
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         let email = e.currentTarget.value
@@ -49,11 +54,10 @@ export const Registration = () => {
     }
 
 
-
     const disabled = isLoading || !!errorEmail || !!errorPassword || !!errorPassword2
 
     if (success) {
-        return <Navigate to={'/login'} />
+        return <Navigate to={'/login'}/>
     }
     return (
         <div>
@@ -74,7 +78,7 @@ export const Registration = () => {
                                     placeholder={"password"}
                                     value={password}
                                     onChange={onChangePassword}
-                                    error = {errorPassword}
+                                    error={errorPassword}
                     />
                 </div>
                 <div>
@@ -85,13 +89,20 @@ export const Registration = () => {
                                     error={errorPassword2}
                     />
                 </div>
-                <div>
-                    <SuperButton type='button'
-                                 onClick={RegisterCallback}
-                                 disabled={disabled}>Register</SuperButton>
+                <div className={s.btnContainer}>
+                    <div>
+                        <SuperButton type='button'
+                                     onClick={RegisterCallback}
+                                     disabled={disabled}>Register</SuperButton>
+                    </div>
+                    <div>
+                        <SuperButton onClick={CancelCallback}>
+                            Cancel
+                        </SuperButton>
+                    </div>
                 </div>
             </form>
-            {error? <span className={s.error}>{error}</span>: null}
+            {error ? <span className={s.error}>{error}</span> : null}
         </div>
     )
 }

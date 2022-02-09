@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: registration page added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +104,7 @@
       <workItem from="1644230647487" duration="3636000" />
       <workItem from="1644330773490" duration="341000" />
       <workItem from="1644331382100" duration="799000" />
-      <workItem from="1644411198378" duration="136000" />
+      <workItem from="1644411198378" duration="660000" />
     </task>
     <task id="LOCAL-00001" summary="feat: registration page added">
       <created>1644061357583</created>

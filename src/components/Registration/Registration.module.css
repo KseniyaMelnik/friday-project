@@ -10,3 +10,8 @@
 .error {
     color: red
 }
+
+.btnContainer {
+    display: flex;
+    justify-content: space-between;
+}
