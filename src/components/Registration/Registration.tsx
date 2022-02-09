@@ -50,7 +50,7 @@ export const Registration = () => {
 
 
 
-    const disabled = isLoading || !!errorEmail
+    const disabled = isLoading || !!errorEmail || !!errorPassword || !!errorPassword2
 
     if (success) {
         return <Navigate to={'/login'} />
