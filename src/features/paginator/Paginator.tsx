@@ -1,6 +1,6 @@
 import React from "react"
 import {useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../bll/packReducer";
+import {getPacks, setPage} from "../../bll/packReducer";
 import { AppRootStateType } from "../../bll/store";
 import s from "./Paginator.module.css"
 
@@ -19,7 +19,7 @@ export const Paginator = ()=> {
     }
     const onPageChanged = (p: number) => {
         dispatch(setPage(p))
-        //dispatch(getPacks())
+        dispatch(getPacks())
     }
     return <div>
         {pages.map(p => <span
