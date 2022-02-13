@@ -1,0 +1,68 @@
+.default {
+    position: relative;
+    /* Сбрасываем дефолтные стили */
+    border: none;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    /* Тут можно поэкспериментировать */
+    background: #21268F;
+    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    max-width: 266px;
+    width: 266px;
+    min-width: 127px;
+    min-height: 36px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    line-height: 19px;
+    color: #ECECF9;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    /* margin-bottom: 30px;
+    margin-top: 84px; */
+    align-self: center;
+}
+
+.default:hover,
+.red:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+}
+
+.default:disabled {
+    background-color: #444886;
+    color: gray;
+    border: 1px solid grey;
+}
+
+.red {
+    /* Сбрасываем дефолтные стили */
+    border: none;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    /* Тут можно поэкспериментировать */
+    width: 124px;
+    min-height: 36px;
+    background: #f5a5a5;
+    line-height: 19px;
+    color: #21268F;
+    opacity: 0.8;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.red:disabled {
+    background-color: pink;
+    color: gray;
+    border: 1px solid grey;
+
+}
+
+
+

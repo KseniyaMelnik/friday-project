@@ -1,12 +1,17 @@
 import s from "./Registration.module.css"
 import React, {ChangeEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../bll/store";
 import {Navigate, useNavigate} from "react-router-dom";
-import {signUpTC} from "../../store/registration-reducer";
-import {AppRootStateType} from "../../store/store";
-import SuperInputText from "../common/SuperInput/SuperInputText";
-import SuperButton from "../common/SuperButton/SuperButton";
 import {validateEmail, validatePassword} from "../../utils/validators/validator";
+import InputText from "../../componens/inputText/InputText";
+import MainButton from "../../componens/mainButton/MainButton";
+import {signUpTC} from "../../bll/registerReduser";
+import LogoTitle from "../../componens/logoTitle/LogoTitle";
+import InputPassword from "../../componens/InputPassword/InputPassword";
+import CancelButton from "../../componens/canсelButton/CancelButton";
+import TitlePage from "../../componens/titlePage/TitlePage";
+import { Search } from "../../features/search/Search";
 
 export const Registration = () => {
     const [email, setEmail] = useState('')
@@ -18,18 +23,20 @@ export const Registration = () => {
     const [errorPassword2, setErrorPassword2] = useState('')
 
     const dispatch = useDispatch();
-    const navigate = useNavigate()
-    const RegisterCallback = (
-        () => dispatch(signUpTC(email, password, password2))
-    )
+    const navigate = useNavigate();
 
+    const RegisterCallback = (
+        () => {
+            dispatch(signUpTC(email, password, password2))
+        }
+    )
     const CancelCallback = () => {
-        navigate('/login', {replace: true})
+        navigate('/login', { replace: true })
     }
 
-    const isLoading = useSelector<AppRootStateType, boolean>(state => state.register.isLoading)
     const success = useSelector<AppRootStateType, boolean>(state => state.register.success)
     const error = useSelector<AppRootStateType, null | string>(state => state.register.error)
+    const isLoading = useSelector<AppRootStateType, boolean>(state => state.register.isLoading)
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         let email = e.currentTarget.value
@@ -52,52 +59,46 @@ export const Registration = () => {
         setErrorPassword2(error)
     }
 
-    const disabled = isLoading || !!errorEmail || !!errorPassword || !!errorPassword2
+    const disabled = isLoading || !!errorEmail || !!errorPassword
 
     if (success) {
         return <Navigate to={'/login'}/>
     }
     return (
-        <div>
-            <h2>It-incubator</h2>
-            <p>Sign Up</p>
-            {isLoading && <span> Loading </span>}
+        <div className={s.registration}>
+            <LogoTitle/>
+            {/* <p>Sign Up</p> */}
+            <TitlePage title='Регистрация'/>
+            {isLoading ? <span> Loading...</span> : null}
             <form className={s.form} action="">
-                <div>
-                    <SuperInputText type="email"
-                                    placeholder={"Email"}
+                    <InputText type="email"
+                                    // placeholder={"Email"}
                                     value={email}
                                     onChange={onChangeEmail}
                                     error={errorEmail}
                     />
-                </div>
-                <div>
-                    <SuperInputText type="password"
-                                    placeholder={"password"}
+                    <InputPassword type="password"
+                                    title='Password'
+                                    // placeholder={"password"}
                                     value={password}
                                     onChange={onChangePassword}
                                     error={errorPassword}
                     />
-                </div>
-                <div>
-                    <SuperInputText type="password"
-                                    placeholder={"Confirm password"}
+                    <InputPassword type="password"
+                                    title="Повторите password"
+                                    // placeholder={"Confirm password"}
                                     value={password2}
                                     onChange={onChangePassword2}
                                     error={errorPassword2}
                     />
-                </div>
                 <div className={s.btnContainer}>
-                    <div>
-                        <SuperButton type='button'
-                                     onClick={RegisterCallback}
-                                     disabled={disabled}>Register</SuperButton>
-                    </div>
-                    <div>
-                        <SuperButton onClick={CancelCallback}>
-                            Cancel
-                        </SuperButton>
-                    </div>
+                        <CancelButton
+                            onClick={CancelCallback}>Отмена</CancelButton>
+                        <MainButton
+                            type='button'
+                            onClick={RegisterCallback}
+                            disabled={disabled}
+                            style={{width:'186px'}}>Зарегистрироваться </MainButton>
                 </div>
             </form>
             {error ? <span className={s.error}>{error}</span> : null}

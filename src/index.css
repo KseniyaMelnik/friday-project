@@ -1,6 +1,41 @@
+@font-face {
+  font-family: 'SFProDisplay-Regular';
+  src: url('./assets/fonts/SFProDisplay/SFProDisplay-Regular.woff');
+  font-display: swap;
+  font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'SFProDisplay-Bold';
+  src: url('./assets/fonts/SFProDisplay/SFProDisplay-Bold.woff');
+  font-display: swap;
+  font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'SFProDisplay-Semibold';
+  src: url('./assets/fonts/SFProDisplay/SFProDisplay-Semibold.woff');
+  font-display: swap;
+  font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-SemiBold.ttf');
+  font-display: swap;
+  font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.woff');
+  font-display: swap;
+  font-weight: 400;
+	font-style: normal;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'SFProDisplay-Regular','sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

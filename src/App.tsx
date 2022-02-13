@@ -1,28 +1,52 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {Route, Routes} from "react-router-dom";
-import {Login} from "./components/Login";
-import {Registration} from "./components/Registration/Registration";
-import {Profile} from "./components/Profile";
-import {NewPassword} from "./components/NewPassword";
-import {PasswordRetrieval} from "./components/PasswordRetrieval";
-import {Test} from "./components/Test";
-import Error404 from "./components/Error404/Error404";
+import {Navigate, Route, Routes} from "react-router-dom";
+import {MainPage} from "./ui/MainPage/MainPage";
+import {Login} from "./ui/Login/Login";
+import {Registration} from "./ui/Registration/Registration";
+import {Error404} from "./ui/Eror404/Error404";
+import {PasswordRecovery} from "./ui/Password/PasswordRecovery";
+import {SetNewPassword} from "./ui/Password/SetNewPassword";
+import {TransitionalPage} from "./ui/Password/TransitionalPage";
+import {SuccessRecoveryPassword} from "./ui/Password/SuccessRecoveryPassword";
+import {Profile} from "./ui/Profile/Profile";
+import {initializeTC} from "./bll/appReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./bll/store";
+import loader from './assets/loader.svg'
 
-function App() {
+const App = () => {
+    const dispatch = useDispatch()
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
+
+    useEffect(() => {
+        dispatch(initializeTC())
+    }, [])
+
+    if (!isInitialized) {
+        return <div style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
+            <img src={loader} alt="loader"/>
+        </div>
+    }
+
     return (
         <div className="App">
-                <Routes>
-                    <Route path={'/login'} element={<Login/>}/>
-                    <Route path={"/registration"} element={<Registration/>}/>
-                    <Route path={"/profile"} element={<Profile/>}/>
-                    <Route path={"/new_password"} element={<NewPassword/>}/>
-                    <Route path={"/retrieval"} element={<PasswordRetrieval/>}/>
-                    <Route path={"/404"} element={<Error404/>}/>
-                    <Route path={"/test"} element={<Test/>}/>
-                </Routes>
+            <div className="container">
+            <Routes>
+                <Route path={'/'} element={<MainPage/>}/>
+                <Route path={'/login'} element={<Login/>}/>
+                <Route path={'/registration'} element={<Registration/>}/>
+                <Route path={'404'} element={<Error404/>}/>
+                <Route path='*' element={<Navigate to={'/404'}/>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
+                <Route path={'/password_recovery'} element={<PasswordRecovery/>}/>
+                <Route path={'/set_new_password/:token'} element={<SetNewPassword/>}/>
+                <Route path={'/transitional_page_for_recovery_pass'} element={<TransitionalPage/>}/>
+                <Route path={'/password_recovery_success'} element={<SuccessRecoveryPassword/>}/>
+            </Routes>
+            </div>
         </div>
-    );
+    )
 }
 
 export default App;

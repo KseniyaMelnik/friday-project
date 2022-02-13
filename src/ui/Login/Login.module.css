@@ -1,0 +1,42 @@
+.login{
+    padding: 25px 33px 30px;
+    width: 413px;
+    background: #F9F9FE;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.controlPas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rememberLabel,
+.link{
+    font-size: 14px;
+    line-height: 17px;
+    color: #2D2E46;
+    padding-right: 10px;
+    padding-top: 48px;
+}
+.loginSpan{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #2D2E46;
+    opacity: 0.5;
+}
+.singLink{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21268F;
+    padding-top: 11px;
+}
+.mainButton{
+    margin:82px 0 30px;
+}

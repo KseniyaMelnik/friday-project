@@ -1,0 +1,47 @@
+.cadr{
+    margin-top: 60px;
+    
+}
+.container{
+    padding: 25px 33px 30px;
+    width: 413px;  
+    background: #F9F9FE;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} 
+.logo{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 39px;
+    color: #2D2E46;
+    margin: 0 auto;
+    padding-bottom: 32px;
+}
+.title{
+    margin: 0;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #2D2E46;
+    text-align: center;
+    padding-bottom: 38px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titleLink{
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #2D2E46;
+    text-align: right;
+}
