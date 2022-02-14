@@ -11,10 +11,10 @@ const initialCardPacks: packType[] = [
 const initialState = {
     searchPack: "",
     cardPacksTotalCount: 0,
-    pageCount: 0,
+    pageCount: 10,
     page: 1,
     sortByUpdated: 0,
-    cardPacks: initialCardPacks // [] as Array<packType>
+    cardPacks: [] as Array<packType>
 }
 export type packType = {
     _id: string,
@@ -68,11 +68,12 @@ export const setSort = (num: number) => {
     return {type: 'SET-SORT', num} as const
 }
 
-export const getPacks = (): ThunkType => async (
-    dispatch) => {
-    await packsAPI.getPacks()
+export const getPacks = (): ThunkType =>
+
+    async (dispatch, getState: any) => {
+    const {page, pageCount, searchPack, sortByUpdated} = getState().packs
     try {
-        const data = await packsAPI.getPacks()
+        const data = await packsAPI.getPacks(page, pageCount, searchPack, sortByUpdated)
         dispatch(setPacks(data.data.cardPacks))
         dispatch(setPageCount(data.data.pageCount))
         dispatch(setCardsCount(data.data.cardPacksTotalCount))

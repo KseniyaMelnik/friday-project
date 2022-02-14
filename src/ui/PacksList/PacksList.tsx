@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import {packType} from "../../bll/packReducer";
 import {AppRootStateType} from "../../bll/store";
 import s from "./PackList.module.css"
+import {SortButton} from "../../features/sort/SortButton";
 
 export const PackList = () => {
 
@@ -12,6 +13,13 @@ return (
     packs
         ? <div className={s.table}>
             <div>PackList</div>
+            <div className={s.table__row}>
+                <TableCell item={'Name'}/>
+                <TableCell item={'Cards'} />
+                <TableCell item={'Last Updated'} sort/>
+                <TableCell item={'Created By'} />
+                
+            </div>
             {packs.map((pack, idx) => <TableRow key={idx} pack={pack} />)}
         </div>
         : <div>loading...</div>
@@ -39,6 +47,7 @@ const TableCell = (props: any) => {
             <input
                 value={props.item}
                 type="text" />
+            {props.sort? <SortButton />: ''}
         </div>
     )
 }

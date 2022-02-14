@@ -6,6 +6,7 @@ import {Navigate} from "react-router-dom";
 import {getPacks} from "../../bll/packReducer";
 import {PackList} from "../PacksList/PacksList";
 import {Paginator} from "../../features/paginator/Paginator";
+import {Search} from "../../features/search/Search";
 
 export const Profile = () => {
     const dispatch = useDispatch()
@@ -26,6 +27,7 @@ export const Profile = () => {
         <div>
             Profile page
             <button onClick={onLogout}>log out</button>
+            <Search />
             <PackList/>
             <Paginator />
         </div>

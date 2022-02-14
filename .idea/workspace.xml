@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: update project">
+    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: add pack api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/register-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/register-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/packsAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packsAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/packReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/packReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/paginator/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/paginator/Paginator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/search/Search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/sort/SortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/sort/SortButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MainPage/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainPage/MainPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PacksList/PacksList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PacksList/PacksList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Profile/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../cards-nya-back-2-0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -109,7 +111,8 @@
       <workItem from="1644330773490" duration="341000" />
       <workItem from="1644331382100" duration="799000" />
       <workItem from="1644411198378" duration="1367000" />
-      <workItem from="1644759226667" duration="8752000" />
+      <workItem from="1644759226667" duration="14595000" />
+      <workItem from="1644825689531" duration="3144000" />
     </task>
     <task id="LOCAL-00001" summary="feat: registration page added">
       <created>1644061357583</created>
@@ -125,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644759324124</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: add pack api">
+      <created>1644769170952</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644769170953</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +156,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: registration page added" />
     <MESSAGE value="feat: update project" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update project" />
+    <MESSAGE value="feat: add pack api" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add pack api" />
   </component>
 </project>
