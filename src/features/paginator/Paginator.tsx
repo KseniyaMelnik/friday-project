@@ -1,6 +1,6 @@
 import React from "react"
 import {useDispatch, useSelector } from "react-redux";
-import {getPacks, setPage} from "../../bll/packReducer";
+import {getPacks, setPage, setPageCount} from "../../bll/packReducer";
 import { AppRootStateType } from "../../bll/store";
 import s from "./Paginator.module.css"
 
@@ -21,6 +21,10 @@ export const Paginator = ()=> {
         dispatch(setPage(p))
         dispatch(getPacks())
     }
+    const onSelectChanged = (pageCount: string) => {
+        dispatch(setPageCount(Number(pageCount)))
+        dispatch(getPacks())
+    }
     return <div>
         {pages.map(p => <span
             className = {page === p ? s.active: ""}
@@ -29,5 +33,12 @@ export const Paginator = ()=> {
                 onPageChanged(p)
             }}
         >{p}</span>)}
+        <p>Показывать
+            <select onChange={(e)=> onSelectChanged(e.currentTarget.value)}>
+                <option value="4">4</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="100">100</option>
+            </select> колод на странице</p>
     </div>
 }

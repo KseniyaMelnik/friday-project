@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: add pack api">
+    <list default="true" id="b579f4bc-df5b-4d77-88a7-51fb2bc03c5e" name="Changes" comment="feat: update pack thunk, add sort button to table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/packsAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packsAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/packReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/packReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/search/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/sort/SortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/sort/SortButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MainPage/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainPage/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/PacksList/PacksList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PacksList/PacksList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/paginator/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/paginator/Paginator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +108,11 @@
       <workItem from="1644331382100" duration="799000" />
       <workItem from="1644411198378" duration="1367000" />
       <workItem from="1644759226667" duration="14595000" />
-      <workItem from="1644825689531" duration="3144000" />
+      <workItem from="1644825689531" duration="6162000" />
+      <workItem from="1644951387019" duration="115000" />
+      <workItem from="1644953416778" duration="219000" />
+      <workItem from="1644954997164" duration="121000" />
+      <workItem from="1644955431874" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="feat: registration page added">
       <created>1644061357583</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644769170953</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: update pack thunk, add sort button to table">
+      <created>1644829189984</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644829189984</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +164,7 @@
     <MESSAGE value="feat: registration page added" />
     <MESSAGE value="feat: update project" />
     <MESSAGE value="feat: add pack api" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add pack api" />
+    <MESSAGE value="feat: update pack thunk, add sort button to table" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update pack thunk, add sort button to table" />
   </component>
 </project>

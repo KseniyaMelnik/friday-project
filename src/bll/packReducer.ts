@@ -70,10 +70,18 @@ export const setSort = (num: number) => {
 
 export const getPacks = (): ThunkType =>
 
-    async (dispatch, getState: any) => {
-    const {page, pageCount, searchPack, sortByUpdated} = getState().packs
+    async (dispatch, getState) => {
+    const packs = getState().packs
     try {
-        const data = await packsAPI.getPacks(page, pageCount, searchPack, sortByUpdated)
+        const data = await packsAPI.getPacks({
+            page: packs.page,
+            pageCount: packs.pageCount,
+            min: packs.cardsValuesFromRange[0],
+            max: packs.cardsValuesFromRange[1],
+            user_id: packs.myId,
+            sortPacks: packs.sortPacks,
+            packName: packs.searchField
+        })
         dispatch(setPacks(data.data.cardPacks))
         dispatch(setPageCount(data.data.pageCount))
         dispatch(setCardsCount(data.data.cardPacksTotalCount))
