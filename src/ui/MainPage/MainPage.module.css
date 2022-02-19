@@ -1,0 +1,116 @@
+.mainPage{
+    background: #EBE0E9;
+    position: relative;
+    padding-bottom: 40px;
+    z-index: 1;
+    background-image:url('./../../assets/images/sky.png');
+}
+.content{
+    margin-bottom: 40px;
+}
+.title{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 39px;
+    color: #EBE0E9;
+    padding: 40px;
+}
+.subTitle,
+.subTitle2,
+.subTitle3{
+    margin: 20px;
+    color:#ebe0e9;
+    font-size: 25px; 
+}
+.subTitle2{
+    color:#3a488a;
+}
+.subTitle3{
+    color:#34407a;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+.items{
+    display: flex;
+    flex-direction: column;
+}
+.link{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2D2E46;
+    background-color:#EBE0E9;
+    border: groove;
+    border-radius: 8px;
+    padding: 10px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.link:hover{
+    transform: scale3d(1.5, 1.5, 1.5);
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    -moz-transform: scale3d(1.5, 1.5, 1.5);
+    -ms-transform: scale3d(1.5, 1.5, 1.5);
+    -o-transform: scale3d(1.5, 1.5, 1.5);
+}
+a:visited{
+    border:2px solid #21268F;
+    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+.img{
+    width: 150px;
+    border: 10px solid #EBE0E9;
+    margin-bottom: 40px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+}
+/* .raketa{
+    width: 100px;
+    position: absolute;
+    top: 87%;
+    right: 5%;
+    transform: rotate(1deg);
+} */
+.button{
+    margin-top: 20px;
+}
+.button:hover::before{
+    content:'';
+    display: block;
+    position: absolute;
+    top: -200%;
+    left:0%;
+    background: url('./../../assets/images/raketa.png');
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    animation-name: example;
+    animation-duration:2s;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+}
+@keyframes example {
+    0%   { left:0%; top:-200%;}
+    100% { left:100%; top:-200%;}
+  }
+
+

@@ -1,0 +1,16 @@
+.paginator {
+    margin: 10px;
+}
+
+.active {
+    color: #F2F5F7;
+    background-color: #21268F;
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.paginatorBtn,
+.pageNumber {
+    padding: 5px 10px;
+}
+

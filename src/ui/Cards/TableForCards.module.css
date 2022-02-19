@@ -1,0 +1,23 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.table__row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    height: 30px;
+}
+
+.table__cell {
+    border: 1px solid #999;
+    width: 200px;
+}
+
+input {
+    border: none;
+    width: 90%;
+    height: 26px;
+}
