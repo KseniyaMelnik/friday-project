@@ -1,9 +1,9 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent, useState} from 'react'
 import s from './InputPassword.module.css'
 import PasswordCheckbox from "../passwordCheckbox/PasswordCheckbox";
 
 
-
+// false - text; true - password
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -46,25 +46,45 @@ const InputPassword: React.FC<InputPasswordPropsType> = (
 
     const finalInputClassName = `${error ? s.errorInput : s.inputPassword} ${className}` // need to fix with (?:) and s.superInput
 
+    let [notSeePassword, setNotSeePassword] = useState(true)
+
+    let changeEyeValue = (value: boolean) => {
+        setNotSeePassword(value)
+    }
+
     return (
         <div className={s.inputPassword}>
             <div className={s.container}>
                 <div className={s.input}>             
                     <label className={s.title}>
-                    <input
-                        id='password-input'
-                        required
-                        type={type}
-                        placeholder="&nbsp;"
-                        // {error ? 'error' : 'Password'}
-                        onChange={onChangeCallback}
-                        onKeyPress={onKeyPressCallback}
-                        className={finalInputClassName}
-                        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-                    />
+                        {notSeePassword
+                            ?  <input
+                                id='password-input'
+                                required
+                                type={'password'}
+                                placeholder="&nbsp;"
+                                // {error ? 'error' : 'Password'}
+                                onChange={onChangeCallback}
+                                onKeyPress={onKeyPressCallback}
+                                className={finalInputClassName}
+                                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                            />
+                        :  <input
+                                id='password-input'
+                                required
+                                type={'text'}
+                                placeholder="&nbsp;"
+                                // {error ? 'error' : 'Password'}
+                                onChange={onChangeCallback}
+                                onKeyPress={onKeyPressCallback}
+                                className={finalInputClassName}
+                                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                            />}
                     <span className={s.span}>{restProps.title}</span>
                     </label>
-                    <PasswordCheckbox></PasswordCheckbox>
+                    <PasswordCheckbox isNotSeePassword={notSeePassword}
+                                      onChangeChecked={changeEyeValue}
+                    />
                     {/* <a href="" className={s.passwordControl}></a>  */}
                 </div> 
                 <hr className={s.line}/>            

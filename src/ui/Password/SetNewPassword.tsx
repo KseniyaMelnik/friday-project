@@ -1,5 +1,5 @@
 import s from "./SetNewPassword.module.css";
-import {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {Navigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../bll/store";
@@ -34,7 +34,6 @@ export const SetNewPassword = () => {
     const {token} = useParams<'token'>()
 
     const createNewPasswordHandler = () => {
-
         dispatch(createNewPasswordTC(newPasswordField1, newPasswordField2, token || ''))
         setNewPasswordField1('')
         setNewPasswordField2('')
@@ -50,14 +49,14 @@ export const SetNewPassword = () => {
             <h4 className={s.title}>Создание нового пароля</h4>
             {error
                 ? <InputPassword title="Password" value={newPasswordField1} onChange={changeNewPasswordField1}
-                                  error={errorMessage} type={'password'}/>
-                : <InputPassword title="Password" value={newPasswordField1} onChange={changeNewPasswordField1} type={'password'}/>
+                                 error={errorMessage}/>
+                : <InputPassword title="Password" value={newPasswordField1} onChange={changeNewPasswordField1}/>
             }
-                {/* <p>Повторите пароль</p> */}
-                <InputPassword title="Confirm password" value={newPasswordField2} onChange={changeNewPasswordField2} type={'password'}/>
-                <p className={s.text}>Введите новый пароль и постарайтесь его не забыть)</p>
-                <MainButton className={s.button} onClick={createNewPasswordHandler} disabled={disabledButton}>Создать новый
-                    пароль</MainButton>
+
+            <InputPassword title="Confirm password" value={newPasswordField2} onChange={changeNewPasswordField2}/>
+            <p className={s.text}>Введите новый пароль и постарайтесь его не забыть)</p>
+            <MainButton className={s.button} onClick={createNewPasswordHandler} disabled={disabledButton}>Создать новый
+                пароль</MainButton>
         </div>
     )
 }

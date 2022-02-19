@@ -1,15 +1,17 @@
 import {ThunkAction} from "redux-thunk";
-import {AppRootStateType} from "./store";
-import {RegisterAPI} from "../dal/register-api";
+import {AppRootStateType, AppThunkType} from "./store";
+import {RegisterApi} from "../dal/registerApi";
 
 export const initialState = {
-    error: null as null | string,
-    success: false,
-    isLoading: false
-};
+        error: null as null | string,
+        success: false,
+        isLoading: false,
+        isLogged: false
+    }
+;
 type RegisterStateType = typeof initialState
 
-export const registerReducer = (state: RegisterStateType = initialState, action: ActionsType): RegisterStateType => {
+export const registerReducer = (state: RegisterStateType = initialState, action: PegistrationActionsType): RegisterStateType => {
     switch (action.type) {
         case "register/SET_ERROR":
             return {
@@ -40,19 +42,20 @@ export const setISLoadingAC = (isLoading: boolean) => ({
     type: "register/SET_IS_LOADING", isLoading
 } as const)
 
-type ActionsType = ReturnType<typeof setSuccessAC>
+export type PegistrationActionsType = ReturnType<typeof setSuccessAC>
     | ReturnType<typeof setErrorAC>
     | ReturnType<typeof setISLoadingAC>
 
+
 // thunk
-export const signUpTC = (email: string, password: string, password2: string): ThunkType => async (
-    dispatch) => {
+export const signUpTC = (email: string, password: string, password2: string): AppThunkType =>
+    async (dispatch) => {
     if (password !== password2) {
         dispatch(setErrorAC('Passwords don\'t match'))
     } else {
         try {
             dispatch(setISLoadingAC(true))
-            await RegisterAPI.signUp(email, password)
+            await RegisterApi.signUp(email, password)
             dispatch(setSuccessAC(true))
         } catch (error: any) {
             const err = error.response ? error.response.data.error : error.message
@@ -62,4 +65,3 @@ export const signUpTC = (email: string, password: string, password2: string): Th
         }
     }
 }
-export type ThunkType = ThunkAction<void, AppRootStateType, unknown, ActionsType>

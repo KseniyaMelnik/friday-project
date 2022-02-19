@@ -11,7 +11,7 @@ import LogoTitle from "../../componens/logoTitle/LogoTitle";
 import InputPassword from "../../componens/InputPassword/InputPassword";
 import CancelButton from "../../componens/canсelButton/CancelButton";
 import TitlePage from "../../componens/titlePage/TitlePage";
-import { Search } from "../../features/search/Search";
+
 
 export const Registration = () => {
     const [email, setEmail] = useState('')
@@ -31,12 +31,13 @@ export const Registration = () => {
         }
     )
     const CancelCallback = () => {
-        navigate('/login', { replace: true })
+        navigate('/login', {replace: true})
     }
 
     const success = useSelector<AppRootStateType, boolean>(state => state.register.success)
     const error = useSelector<AppRootStateType, null | string>(state => state.register.error)
     const isLoading = useSelector<AppRootStateType, boolean>(state => state.register.isLoading)
+    const isLogged = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         let email = e.currentTarget.value
@@ -61,44 +62,42 @@ export const Registration = () => {
 
     const disabled = isLoading || !!errorEmail || !!errorPassword
 
+    if (isLogged) {
+        return <Navigate to="/profile"/>
+    }
+
     if (success) {
         return <Navigate to={'/login'}/>
     }
     return (
         <div className={s.registration}>
             <LogoTitle/>
-            {/* <p>Sign Up</p> */}
             <TitlePage title='Регистрация'/>
             {isLoading ? <span> Loading...</span> : null}
             <form className={s.form} action="">
-                    <InputText type="email"
-                                    // placeholder={"Email"}
-                                    value={email}
-                                    onChange={onChangeEmail}
-                                    error={errorEmail}
-                    />
-                    <InputPassword type="password"
-                                    title='Password'
-                                    // placeholder={"password"}
-                                    value={password}
-                                    onChange={onChangePassword}
-                                    error={errorPassword}
-                    />
-                    <InputPassword type="password"
-                                    title="Повторите password"
-                                    // placeholder={"Confirm password"}
-                                    value={password2}
-                                    onChange={onChangePassword2}
-                                    error={errorPassword2}
-                    />
+                <InputText type="email"
+                           value={email}
+                           onChange={onChangeEmail}
+                           error={errorEmail}
+                />
+                <InputPassword title='Password'
+                               value={password}
+                               onChange={onChangePassword}
+                               error={errorPassword}
+                />
+                <InputPassword title="Повторите password"
+                               value={password2}
+                               onChange={onChangePassword2}
+                               error={errorPassword2}
+                />
                 <div className={s.btnContainer}>
-                        <CancelButton
-                            onClick={CancelCallback}>Отмена</CancelButton>
-                        <MainButton
-                            type='button'
-                            onClick={RegisterCallback}
-                            disabled={disabled}
-                            style={{width:'186px'}}>Зарегистрироваться </MainButton>
+                    <CancelButton
+                        onClick={CancelCallback}>Отмена</CancelButton>
+                    <MainButton
+                        type='button'
+                        onClick={RegisterCallback}
+                        disabled={disabled}
+                        style={{width: '186px'}}>Зарегистрироваться </MainButton>
                 </div>
             </form>
             {error ? <span className={s.error}>{error}</span> : null}

@@ -1,74 +1,48 @@
 import {Link, Navigate} from "react-router-dom";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {loginTC} from "../../bll/authReducer";
+import {loginTC, setErrorAC, setErrorMessageAC} from "../../bll/authReducer";
 import {AppRootStateType} from "../../bll/store";
 import MainButton from "../../componens/mainButton/MainButton";
 import InputText from "../../componens/inputText/InputText";
 import InputPassword from "../../componens/InputPassword/InputPassword";
 import LogoTitle from "../../componens/logoTitle/LogoTitle";
 import TitlePage from "../../componens/titlePage/TitlePage";
-import s from './Login.module.css'
-import {validateEmail, validatePassword} from "../../utils/validators/validator";
+import s from './Login.module.css';
 
-const initialState = {
-    email: '',
-    password: '',
-    rememberMe: false,
-}
-
-const errorState = {
-    email: '',
-    password: '',
-}
 
 export const Login = () => {
-    const [values, setValues] = useState({...initialState})
-    const [type, setType] = useState<boolean>(false)
-    const [error, setError] = useState({...errorState})
+
+    const [emailField, setEmailField] = useState('')
+    const [passwordField, setPasswordField] = useState('')
+    const [rememberMeField, setRememberMeField] = useState(false)
+
+    const changeEmailField = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmailField(e.currentTarget.value)
+        dispatch(setErrorAC(false))
+        dispatch(setErrorMessageAC(''))
+    }
+    const changePasswordField = (e: ChangeEvent<HTMLInputElement>) => setPasswordField(e.currentTarget.value)
+    const changeRememberMeField = (e: ChangeEvent<HTMLInputElement>) => setRememberMeField(e.currentTarget.checked)
+
 
     const isLogged = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
     const authError = useSelector<AppRootStateType, string>(state => state.login.authError)
+    const isError = useSelector<AppRootStateType, boolean>(state => state.login.isError)
+    const disabledButton = useSelector<AppRootStateType, boolean>(state => state.login.disabledButton)
     const dispatch = useDispatch()
 
     const onSubmit = () => {
-        dispatch(loginTC(values))
+        setPasswordField('')
+        setEmailField('')
+        dispatch(loginTC(emailField, passwordField, rememberMeField))
     }
 
-    const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            onSubmit()
-        }
-    }
-
-    let inputType = type ? 'text' : 'password'
-
-    const handleHidePassword = () => {
-        setType(!type)
-    }
-
-    const onChangeValue = (e: ChangeEvent<HTMLInputElement>, field: string) => {
-        let value = field === 'rememberMe' ? e.currentTarget.checked : e.currentTarget.value
-
-        setValues({
-            ...values,
-            [field]: field === 'rememberMe' ? e.currentTarget.checked : e.currentTarget.value
-        })
-
-        if (field === 'email') {
-            let err = validateEmail(e.currentTarget.value) ? "" : "Введите корректный email"
-            setError({
-                ...error,
-                [field]: err
-            })
-        }
-
-        if (field === 'password') {
-            let err = validatePassword(e.currentTarget.value) ? "" : "Введите корректный пароль"
-            setError({
-                ...error,
-                [field]: err
-            })
+    const onKeyPressSendEmailToServer = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === "Enter") {
+            setPasswordField('')
+            setEmailField('')
+            dispatch(loginTC(emailField, passwordField, rememberMeField))
         }
     }
 
@@ -81,28 +55,33 @@ export const Login = () => {
             <div className={s.container}>
                 <LogoTitle/>
                 <TitlePage title="Авторизация"/>
-                <InputText type="text" value={values.email}
-                                onChange={e => onChangeValue(e, 'email')}/>
-                <InputPassword type="password" title='Password' value={values.password}
-                                onChange={e => onChangeValue(e, 'password')}/>
 
+                {isError
+                    ? <InputText value={emailField} onChange={changeEmailField} error={authError}/>
+                    :
+                    <InputText value={emailField} onChange={changeEmailField} onKeyPress={onKeyPressSendEmailToServer}/>
+                }
 
-            <div className={s.controlPas}>
-                <div className={s.remember}>
-                    <label className={s.rememberLabel}>Запомнить пароль</label>
-                    <input className={s.rememberCheckbox} type="checkbox" checked={values.rememberMe}
-                        onChange={e => onChangeValue(e, 'rememberMe')}/>
+                <InputPassword title='Password' value={passwordField}
+                               onChange={changePasswordField}
+                               onKeyPress={onKeyPressSendEmailToServer}/>
+
+                <div className={s.controlPas}>
+                    <div className={s.remember}>
+                        <label className={s.rememberLabel}>Запомнить пароль</label>
+                        <input className={s.rememberCheckbox} type="checkbox" checked={rememberMeField}
+                               onChange={changeRememberMeField}/>
+                    </div>
+                    <div className={s.forgot}>
+                        <Link className={s.link} to='/password_recovery'>Забыли пароль</Link>
+                    </div>
                 </div>
-                <div className={s.forgot}>
-                    <Link className={s.link} to='/password_recovery'>Забыл пароль</Link>
-                </div>
-            </div>
 
-            <div>
-                <MainButton className={s.mainButton} onClick={onSubmit}>Войти</MainButton>
-                <p><span className={s.loginSpan}>Нет аккаунта?</span></p>
-                <Link className={s.singLink} to="/registration">Зарегистрируйся</Link>
-            </div>
+                <div>
+                    <MainButton className={s.mainButton} onClick={onSubmit} disabled={disabledButton}>Войти</MainButton>
+                    <p><span className={s.loginSpan}>Нет аккаунта?</span></p>
+                    <Link className={s.singLink} to="/registration">Зарегистрируйся</Link>
+                </div>
             </div>
         </div>
     )

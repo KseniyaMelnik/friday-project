@@ -19,3 +19,7 @@
 .cansel:hover{
     background: #c1c2f0;
 }
+.cansel:disabled {
+    border: 1px solid grey;
+    opacity: 0.5;
+}

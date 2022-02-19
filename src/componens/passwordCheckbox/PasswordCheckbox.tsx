@@ -7,6 +7,7 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type PasswordCheckboxPropsType = DefaultInputPropsType & {
     onChangeChecked?: (checked: boolean) => void
     spanClassName?: string
+    isNotSeePassword?: boolean
 }
 
 const PasswordCheckbox: React.FC<PasswordCheckboxPropsType> = (
@@ -15,7 +16,7 @@ const PasswordCheckbox: React.FC<PasswordCheckboxPropsType> = (
         onChange, onChangeChecked,
         className, spanClassName,
         children, // в эту переменную попадёт текст, типизировать не нужно так как он затипизирован в React.FC
-
+        isNotSeePassword,
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
@@ -35,6 +36,7 @@ const PasswordCheckbox: React.FC<PasswordCheckboxPropsType> = (
                 type={'checkbox'}
                 onChange={onChangeCallback}
                 className={finalInputClassName}
+                checked={isNotSeePassword}
 
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
             />

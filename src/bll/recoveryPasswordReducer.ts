@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {ForgotPasswordAPI} from "../dal/API";
+import {ForgotPasswordAPI} from "../dal/passwordRecoveryAPI";
 
 
 type InitialStateType = {
@@ -67,7 +67,11 @@ type SetButtonConditionActionType = ReturnType<typeof setButtonDisable>
 type SetErrorActionType = ReturnType<typeof setErrorAC>
 type SetErrorMessageActionType = ReturnType<typeof setErrorMessage>
 
-type ActionsType = SetErrorActionType | SetButtonConditionActionType | SetIsSuccessActionType | SetErrorMessageActionType
+type ActionsType =
+    SetErrorActionType
+    | SetButtonConditionActionType
+    | SetIsSuccessActionType
+    | SetErrorMessageActionType
 
 
 //thunks
@@ -77,15 +81,22 @@ export const passwordRecoveryTC = (email: string) => {
         dispatch(setButtonDisable(true))
         ForgotPasswordAPI.forgotPassword(email)
             .then((res) => {
-                dispatch(setButtonDisable(false))
                 dispatch(setIsisSuccess(true))
                 dispatch(setErrorMessage(''))
             })
-            .catch((er: any) => {
-                dispatch(setErrorAC(true))
-                dispatch(setButtonDisable(false))
-                dispatch(setErrorMessage('Вы вводите неверные данные'))
+            .catch(er => {
+                if (er.response) {
+                     dispatch(setErrorAC(true))
+                     dispatch(setErrorMessage('Вы вводите неверные данные'))
+                } else {
+                    dispatch(setErrorAC(true))
+                    dispatch(setErrorMessage('Проблема с интернет-соединением'))
+                }
             })
+            .finally(() => {
+                    dispatch(setButtonDisable(false))
+                }
+            )
     }
 }
 

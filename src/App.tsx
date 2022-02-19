@@ -14,6 +14,10 @@ import {initializeTC} from "./bll/appReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./bll/store";
 import loader from './assets/loader.svg'
+import { Test } from './ui/Test/Test';
+import {Header} from "./componens/header/Header";
+import {Packs} from "./ui/Packs/Packs";
+import {Cards} from "./ui/Cards/Cards";
 
 const App = () => {
     const dispatch = useDispatch()
@@ -32,17 +36,21 @@ const App = () => {
     return (
         <div className="App">
             <div className="container">
+                <Header/>
             <Routes>
                 <Route path={'/'} element={<MainPage/>}/>
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/registration'} element={<Registration/>}/>
-                <Route path={'404'} element={<Error404/>}/>
+                <Route path={'/404'} element={<Error404/>}/>
                 <Route path='*' element={<Navigate to={'/404'}/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/password_recovery'} element={<PasswordRecovery/>}/>
                 <Route path={'/set_new_password/:token'} element={<SetNewPassword/>}/>
                 <Route path={'/transitional_page_for_recovery_pass'} element={<TransitionalPage/>}/>
                 <Route path={'/password_recovery_success'} element={<SuccessRecoveryPassword/>}/>
+                <Route path={'/test'} element={<Test />} />
+                <Route path={'/packs'} element={<Packs />} />
+                <Route path={'/cards'} element={<Cards />} />
             </Routes>
             </div>
         </div>
