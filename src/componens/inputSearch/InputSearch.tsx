@@ -46,7 +46,7 @@ const InputSearch: React.FC<InputSearchPropsType> = (
 
     return (
         <div className={s.inputSearch}>
-            <img className={s.inputImg} src={search}></img> 
+            
                         <input
                             type={type}
                             placeholder="Search ..."                          
@@ -55,7 +55,7 @@ const InputSearch: React.FC<InputSearchPropsType> = (
                             className={s.input}
                             {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                         />  
-                                      
+                        {/* <img className={s.inputImg} src={search}></img>               */}
         </div>
     )
 }

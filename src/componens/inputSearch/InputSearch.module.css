@@ -1,10 +1,10 @@
-/* .inputSearch{
+.inputSearch{
     position: relative;
-} */
+}
 .input{
     border:1px solid #635D80;
     height:36px;
-    width: 50%;
+    width: 100%;
     padding: 10px 0 10px 40px;
     position: relative;
     background: #ECECF9;
@@ -12,8 +12,14 @@
     border-radius: 2px;
     outline: none;  
 }
-.inputImg{
+.inputSearch::after{
+    content:'';
     width: 16px;
     height: 16px;
-    transform: translate3d(28px, 5px, 0px);
+    display: block;
+    background-image: url('./../../assets/images/search.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 11px;
+    left: 16px;
 }

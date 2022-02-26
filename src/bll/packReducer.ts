@@ -1,4 +1,6 @@
+import { Dispatch } from "redux";
 import {CardPacksType, packsAPI, PacksResponseType} from "../dal/packsAPI";
+import { setAppStatusAC } from "./appReducer";
 import {AppThunkType} from "./store";
 
 export const initialState = {
@@ -12,6 +14,7 @@ export const initialState = {
     sortPacks: '',
     searchField: '',
     myId: '',
+    requestStatus: null as null | string
 }
 
 export type PackActionType =
@@ -23,6 +26,8 @@ export type PackActionType =
     | ReturnType<typeof setPageCount>
     | ReturnType<typeof setPacksFromRange>
     | ReturnType<typeof setMyPacks>
+    | ReturnType<typeof setRequestStatusAC>
+
 
 export type PackReducerStateType = typeof initialState
 
@@ -35,8 +40,9 @@ export const packReducer = (state: PackReducerStateType = initialState, action: 
         case "packs/SET-SORT":
         case "packs/SET-PACKS-FROM-RANGE":
         case "packs/SET-MY-PACKS":
-        case "packs/CREATE-PACK":
             return {...state, ...action.payload}
+        case "packs/SET-REQUEST-STATUS":
+            return {...state, requestStatus: action.payload.requestStatus}
         default:
             return state
     }
@@ -61,20 +67,21 @@ export const setSortPacks = (sortPacks: string) => {
     return {type: 'packs/SET-SORT', payload: {sortPacks}} as const
 }
 export const setPacksFromRange = (cardsValuesFromRange: number[]) => {
-    return {type: "packs/SET-PACKS-FROM-RANGE", payload: {cardsValuesFromRange}}
+    return {type: "packs/SET-PACKS-FROM-RANGE", payload: {cardsValuesFromRange}} as const
 }
 export const setMyPacks = (myId: string) => {
-    return {type: "packs/SET-MY-PACKS", payload: {myId}}
+    return {type: "packs/SET-MY-PACKS", payload: {myId}} as const
 }
 
-export const createPackAC = (namePack: string) => {
-    return {type: "packs/CREATE-PACK", payload: {namePack}} as const
+export const setRequestStatusAC = (requestStatus: string) => {
+    return {type: "packs/SET-REQUEST-STATUS", payload: {requestStatus}} as const
 }
 
 export const getPacks = (): AppThunkType =>
-    async (dispatch, getState) => {
+    async (dispatch: Dispatch, getState) => {
         const packs = getState().packs
         try {
+            dispatch(setAppStatusAC('loading'))
             const res = await packsAPI.getPacks({
                 page: packs.page,
                 pageCount: packs.pageCount,
@@ -87,16 +94,19 @@ export const getPacks = (): AppThunkType =>
             dispatch(setPacks(res.data))
         } catch (error: any) {
             console.log(error)
+        } finally {
+            dispatch(setAppStatusAC('idle'))
         }
     }
 
-export const createPackTC = (): AppThunkType =>
+export const createPackTC = (nameNewPack: string): AppThunkType =>
     async (dispatch) => {
         try {
-            const res = await packsAPI.createPack('My PACKI')
+            const res = await packsAPI.createPack(nameNewPack)
             dispatch(getPacks())
+            dispatch(setRequestStatusAC('успешный успех'))
         } catch (error: any) {
-            console.log(error)
+            dispatch(setRequestStatusAC('ошибка'))
         }
     }
 
@@ -105,17 +115,28 @@ export const deletePackTC = (packID: string): AppThunkType =>
         try {
             const res = await packsAPI.deletePack(packID)
             dispatch(getPacks())
-        } catch (error: any) {
-            console.log(error)
+            dispatch(setRequestStatusAC('успешный успех'))
+        } catch (e: any) {
+            if(e.response) {
+                dispatch(setRequestStatusAC('Ошибка: Это колода не принадлежит Вам'))
+            } else {
+                dispatch(setRequestStatusAC('Проблемы с интернет соединением'))
+            }
         }
     }
 
-export const updatePackTC = (packID: string): AppThunkType =>
+
+export const updatePackTC = (packID: string, newNamePack: string): AppThunkType =>
     async (dispatch) => {
         try {
-            const res = await packsAPI.updatePack('UpdatedPACK', packID)
+            const res = await packsAPI.updatePack(newNamePack, packID)
             dispatch(getPacks())
-        } catch (error: any) {
-            console.log(error)
+            dispatch(setRequestStatusAC('успешный успех'))
+        } catch (e: any) {
+            if(e.response) {
+                dispatch(setRequestStatusAC('Ошибка: Это колода не принадлежит Вам'))
+            } else {
+                dispatch(setRequestStatusAC('Проблемы с интернет соединением'))
+            }
         }
     }

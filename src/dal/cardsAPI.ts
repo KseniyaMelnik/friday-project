@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import {instance} from "./instance";
 
 
@@ -8,15 +9,18 @@ export const cardsAPI = {
     getCards(payload: CardsGetParams) {
         return instance.get<CardsResponseType>(`/cards/card`, {params: payload})
     },
-    createCard (packID: string) {
-        return instance.post('/cards/card', {card: {cardsPack_id: packID, question: 'почём в Одессе рубероид?'}})
+    createCard (packID: string, question: string, answer: string) {
+        return instance.post('/cards/card', {card: {cardsPack_id: packID, question: question, answer: answer}})
     },
     deleteCard (cardID: string) {
         return instance.delete(`/cards/card?id=${cardID}`)
     },
-    updateCard (newQuestion: string, cardID: string) {
-        return instance.put('/cards/card', {card: {question: newQuestion, _id: cardID}})
-    }
+    updateCard (newQuestion: string, newAnswer: string, cardID: string) {
+        return instance.put('/cards/card', {card: {question: newQuestion, answer: newAnswer, _id: cardID}})
+    },
+    grade(payload: GradeData) {
+        return instance.put<GradeResponse, AxiosResponse<GradeResponse>, GradeData>('/cards/grade', payload)
+    },
 };
 
 // Types
@@ -53,7 +57,16 @@ export type CardType = {
     _id: string
 }
 
-// type CreatePackType = {
-//     name: string
-//     private?: boolean
-// }
+export type GradeData = {
+    card_id: string
+    grade: number
+}
+
+export type GradeResponse = {
+    _id: string
+    cardsPack_id: string
+    card_id: string
+    user_id: string
+    grade: number
+    shots: number
+}

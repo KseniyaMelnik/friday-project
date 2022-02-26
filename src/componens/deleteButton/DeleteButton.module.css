@@ -1,0 +1,15 @@
+.delete{
+    background: #F1453D;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+    padding: 6px;
+}
+.delete:hover{
+    background:#ee190e;
+}
+.desable{
+    opacity: 0.5;
+}

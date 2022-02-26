@@ -11,6 +11,7 @@ type InputTextPropsType = DefaultInputPropsType & { // и + ещё пропсы 
     onEnter?: () => void
     error?: string
     spanClassName?: string
+    fieldName?: string
 }
 
 const InputText: React.FC<InputTextPropsType> = (
@@ -20,6 +21,7 @@ const InputText: React.FC<InputTextPropsType> = (
         onKeyPress, onEnter,
         error,
         className, spanClassName,
+        value, fieldName,
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
@@ -49,23 +51,23 @@ const InputText: React.FC<InputTextPropsType> = (
                         <input
                             required
                             type={type}
-                            placeholder="&nbsp;"                          
+                            placeholder="&nbsp;"
                             // {error ? 'error' : 'Email'}
                             onChange={onChangeCallback}
                             onKeyPress={onKeyPressCallback}
                             className={finalInputClassName}
-
+                            value={value}
                             {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                         />
-                    <span className={s.span}>Email</span>
+                        <span className={s.span}>{fieldName}</span>
                     </label>
-                    
+
                 </div>
-                <hr className={s.line}/> 
+                <hr className={s.line}/>
             </div>
             {error && <span className={finalSpanClassName}>{error}</span>}
         </div>
-        
+
     )
 }
 

@@ -1,20 +1,21 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react'
-import s from './SuperButton.module.css'
+import s from './DeleteButton.module.css'
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
-type SuperButtonPropsType = DefaultButtonPropsType & {
+type DeleteButtonPropsType = DefaultButtonPropsType & {
     red?: boolean
+    disabled?: boolean
 }
 
-const SuperButton: React.FC<SuperButtonPropsType> = (
+const DeleteButton: React.FC<DeleteButtonPropsType> = (
     {
         red, className,
         ...restProps// все остальные пропсы попадут в объект restProps, там же будет children
     }
 ) => {
-    const finalClassName = `${red ? s.red : ''} ${s.default}`
+    const finalClassName = `${red ? s.red : s.delete} ${className}`
 
     return (
         <button
@@ -24,4 +25,4 @@ const SuperButton: React.FC<SuperButtonPropsType> = (
     )
 }
 
-export default SuperButton
+export default DeleteButton

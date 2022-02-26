@@ -1,0 +1,43 @@
+.rememberCheckboxContainer {
+    width: 250px
+}
+.container{
+    background: #FEFEFF;
+    border-radius: 8px;
+    /* max-width:1080px; */
+    margin: 24px 3%;
+    display: flex;
+}
+.aside{
+    width: 263px;
+    padding: 33px 24px;
+    background: #ECECF9;
+    text-align: start;
+    border-radius: 8px;
+}
+.wrapper{
+    display: flex;
+}
+.content{
+    text-align: start;
+    padding: 24px 48px;
+    flex-grow: 2;
+}
+.subTitle{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2D2E46;
+    padding-bottom: 40px;
+}
+.search{
+    margin-bottom: 30px;
+    display: flex;
+}
+.input{
+    flex-grow: 2;
+    margin-right: 25px;
+}
+.pagination{
+    display: flex;
+}

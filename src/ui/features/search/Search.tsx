@@ -1,7 +1,7 @@
 import {debounce} from "lodash";
 import React from "react"
 import {useDispatch, useSelector} from "react-redux";
-import {getPacks, setSearchField} from "../../../bll/packReducer";
+import {getPacks} from "../../../bll/packReducer";
 import {AppRootStateType} from "../../../bll/store";
 import InputSearch from "../../../componens/inputSearch/InputSearch";
 import InputText from "../../../componens/inputText/InputText";
@@ -9,10 +9,12 @@ import MainButton from "../../../componens/mainButton/MainButton";
 import {PacksGetParams} from "../../../dal/packsAPI";
 
 type SearchPropsType = {
-    getSearchData: (payload?: PacksGetParams) => any
+    getSearchData: (payload?: any) => any
+    searchField: string
+    setSearchField: (value: string) => void
 }
-export const Search = ({getSearchData}: SearchPropsType) => {
-    const searchField = useSelector((state: AppRootStateType) => state.packs.searchField);
+export const Search = ({getSearchData, setSearchField, searchField}: SearchPropsType) => {
+
     const dispatch = useDispatch();
 
     const SearchDataWidthDebounce = debounce(() => {

@@ -1,0 +1,62 @@
+.container{
+    background: #FEFEFF;
+    border-radius: 8px;
+    max-width:1080px;
+    margin: 24px 10%;
+    display: flex;
+}
+.aside{
+    width: 263px;
+    border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    -moz-border-radius: 8px 0 0 8px;
+    -ms-border-radius: 8px 0 0 8px;
+    -o-border-radius: 8px 0 0 8px;
+    background: #ECECF9;
+    text-align: start;
+}
+.subTitle{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2D2E46;
+    padding: 40px;
+}
+.asideProf{
+    background: #D9D9F1;  
+    padding: 24px;
+    text-align: center;
+}
+.avatar{
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.name{
+    font-family: 'Poppins',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #2D2E46;
+    padding: 10px 0;
+}
+.profession{
+    font-size: 14px;
+    line-height: 17px;
+    opacity: 0.5;
+}
+.content{
+    text-align: start;
+    padding: 24px 48px;
+    flex-grow: 2;
+}
+.table{
+    height: 500px;
+    background-color: aquamarine;
+    margin: 24px 0;
+}
